@@ -1,0 +1,47 @@
+li {
+    font-family: "Times New Roman", Times, serif;
+    border-style: solid;
+    border-radius: 25px;
+    margin: 5px;
+    background: white;
+  }
+  
+.label {
+font-weight: bold;
+}
+
+.devoured {
+  border-style: solid;
+  border-radius: 25px;
+  margin: 5px;
+  background: gray;
+}
+
+.burger {
+  font-family: 'Fascinate', cursive;
+  color: red;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.bg {
+  background-image: url("../images/nes.jpg");
+  height: 89vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -1,0 +1,66 @@
+<body class = "bg-warning col-sm-12">
+
+
+<div class = "row justify-content-sm-center" style = "margin-top: 10px; margin-bottom: 25px">
+<h1 class = "burger">Eat-Da-Burger!!</h1>
+</div>
+
+<div class = "row justify-content-sm-center" style = "margin-bottom: 25px">
+<img src="/assets/img/burger.png" style = "width: 10%; height: auto">
+</div>
+
+
+
+<div class = "row">
+    
+    <div class = "col col-sm-4">
+        <h2 class = "text-center">Burgers Not Devoured</h2>
+          <ul class = "list-group" style = "list-style: none">
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <li class = "card-body mx-auto" style = "width: 50%">
+                      <i class = "fas fa-hamburger" style = "my-auto"></i>
+                      {{burger_name}}
+                      <button type = "button" class ="btn change-devour bg-danger text-white btn-sm float-right" data-id="{{id}}">DEVOUR</button>
+                    </li>
+                {{/unless}}
+            {{/each}}
+          </ul>
+    </div>
+
+    <div class = "col col-sm-4"></div>
+
+
+    <div class = "col col-sm-4">
+      <h2 class = "text-center">Burgers Devoured!</h2>  
+        <ul class = "list-group" style = "list-style: none">
+          {{#each burgers}}
+              {{#if devoured}}
+                  <li class = "devoured card-body text-center mx-auto" style = "width: 50%">
+                      {{burger_name}}
+                  </li>
+              {{/if}}
+          {{/each}}
+        </ul>
+    </div>
+
+</div>
+
+<div class = "row">
+
+  <div class = "col text-center col-sm-12">
+    <h3 class = "burger">Make-Da-Burger!!</h3>
+
+    <form class = "create-form">
+
+      <div class = "form-class">
+        <input type="text" id="makeBurger" name="burger_name"></input>
+      </div>
+
+      <button type="submit">Add Burger</button>
+
+    </form>
+    </div>
+</div> 
+
+</body>
