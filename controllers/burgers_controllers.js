@@ -1,11 +1,13 @@
 // importing the model burger
-var Burger = require("../models");
+var db = require("../models");
 
 // creating Routers
-router.get("/", function(req, res) {
-    Burger.all(function(data) {
+
+module.exports = function(app) {
+app.get("/", function(req, res) {
+    db.Burger.findAll(function(dbdata) {
         var hbsBurgerObject = {
-            burgers: data
+            burgers: dbdata
         };
         console.log(hbsBurgerObject)
         res.render("index", hbsBurgerObject)
@@ -32,5 +34,6 @@ router.put("/api/burgers/:id", function(req, res) {
         }
     });
 });
+}
 
 module.exports = router
