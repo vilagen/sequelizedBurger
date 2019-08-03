@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.BOOLEAN,
           defaultValue: false
         },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      createdAt: sequelize.DATE,
+      updatedAt: sequelize.DATE,
     });
     return Burger;
   };
