@@ -5,35 +5,40 @@ var db = require("../models");
 
 module.exports = function(app) {
 app.get("/", function(req, res) {
-    db.Burger.findAll(function(dbdata) {
+    db.Burger.findAll({})
+    .then(function(dbBurger) {
         var hbsBurgerObject = {
-            burgers: dbdata
+            burgers: dbBurger
         };
         console.log(hbsBurgerObject)
         res.render("index", hbsBurgerObject)
     });
 });
 
-router.post("/api/burgers", function(req, res) {
-    Burger.create("burger_name", "devoured", req.body.burger_name, false, 
-    function(result) {
-        console.log(result)
-        res.json({ id: result.insertId})
-    });
-});
+app.post("/api/burgers", function(req, res) {
+    console.log(req.burger_name);
+    db.Burger.create({
+        burger_name: req.body.burger_name,
+        devoured: false
+    }).then(function(dbBurger) {
+        res.json({id: dbBurger.insertId})
+    })
+})
 
-router.put("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
-
-    Burger.update({devoured: true}, condition, function(result) {
-        console.log(result);
-        if (result.changedRows == 0) {
+app.put("/api/burgers/:id", function(req, res) {
+    db.Burger.update({devoured: true},
+         {
+             where: {
+                 id: req.params.id
+             }
+         }).then(function(dbBurger) {
+            console.log(dbBurger);
+        if (dbBurger.changedRows == 0) {
             return res.status(404).end();
         } else {
             res.status(200).end()
         }
     });
-});
-}
+  });
 
-module.exports = router
+}
