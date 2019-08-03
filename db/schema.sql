@@ -2,6 +2,5 @@ CREATE TABLE burgers(
     id int NOT NULL AUTO_INCREMENT,
     burger_name varchar(255) NOT NULL,
     devoured BOOLEAN,
-    dt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
 );

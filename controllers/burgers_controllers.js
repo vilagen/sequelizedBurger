@@ -1,10 +1,11 @@
 // importing the model burger
+var express = require("express")
+var router = express.Router()
 var db = require("../models");
 
 // creating Routers
 
-module.exports = function(app) {
-app.get("/", function(req, res) {
+router.get("/", function(req, res) {
     db.Burger.findAll({})
     .then(function(dbBurger) {
         var hbsBurgerObject = {
@@ -15,7 +16,7 @@ app.get("/", function(req, res) {
     });
 });
 
-app.post("/api/burgers", function(req, res) {
+router.post("/api/burgers", function(req, res) {
     console.log(req.burger_name);
     db.Burger.create({
         burger_name: req.body.burger_name,
@@ -25,7 +26,7 @@ app.post("/api/burgers", function(req, res) {
     })
 })
 
-app.put("/api/burgers/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     db.Burger.update({devoured: true},
          {
              where: {
@@ -39,6 +40,6 @@ app.put("/api/burgers/:id", function(req, res) {
             res.status(200).end()
         }
     });
-  });
+});
 
-}
+module.exports = router
